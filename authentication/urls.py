@@ -3,12 +3,14 @@ from django.contrib.auth import views as auth_views
 from authentication import views
 from authentication.forms import UserLoginForm, ResetPasswordConfirmForm, ResetPasswordForm
 
+app_name = 'authentication' # Add app_name for namespacing
+
 urlpatterns = [
     # login view from auth_views with custom login template
     path('login/', auth_views.LoginView.as_view(template_name='authentication/login.html',
-                                                form_class=UserLoginForm,
+                                                form_class=UserLoginForm, # Re-enable custom form class
                                                 # True means that if user is already logged in, it will redirect to homepage
-                                                redirect_authenticated_user=True), name='login',
+                                                redirect_authenticated_user=True), name='login', # Re-enable redirect
          ),
 
     # logout view from auth_view
@@ -35,8 +37,6 @@ urlpatterns = [
     path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='authentication/password_reset_complete.html'), name='password_reset_complete'),
 
 
-    # path for homepage where successfull login will redirect
-    path('', views.homepage, name='homepage'),
 
 
 

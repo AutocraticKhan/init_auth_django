@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Listing Added Successfully{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Business Listing Added Successfully!</h2>
+    <p>Your business listing has been submitted and is awaiting review.</p>
+    <p><a href="{% url 'add_business_listing' %}">Add another business listing</a></p>
+    <p><a href="/">Go to Homepage</a></p>
+</div>
+{% endblock body %}

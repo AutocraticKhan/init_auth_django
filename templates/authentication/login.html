@@ -2,17 +2,29 @@
 
 {% block title %}Login{% endblock %}
 
-{% block content %}
-<p>Login</p>
+{% block body %}
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-bold mb-4">Login</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
+    <form method="post" class="bg-white p-6 rounded-lg shadow-md">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-4">
+                <label for="{{ field.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <p class="text-gray-600 text-xs italic">{{ field.help_text }}</p>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="text-red-500 text-xs italic">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
 
-    <input type="submit" value="Submit">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 font-semibold">Submit</button>
+    </form>
 
-</form>
-
-<p>To register account <a href="{% url 'register' %}">Click here</a></p>
-<p>Forgot Password?: <a href="{% url 'password_reset'%}">password_reset</a></p>
-{% endblock %}
+    <p class="mt-4">To register account <a href="{% url 'authentication:register' %}" class="text-blue-600 hover:underline">Click here</a></p>
+    <p>Forgot Password?: <a href="{% url 'authentication:password_reset'%}" class="text-blue-600 hover:underline">password_reset</a></p>
+</div>
+{% endblock body %}

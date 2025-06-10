@@ -5,19 +5,15 @@ from django.forms import forms
 
 # uncomment this if you want to change the class/design of the login form
 class UserLoginForm(AuthenticationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'password']
-
     def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update({
-            'class': 'form-control',
+            'class': 'form-control block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm',
             'placeholder': 'Username',
             'required': 'True'
         })
         self.fields['password'].widget.attrs.update({
-            'class': 'form-control',
+            'class': 'form-control block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm',
             'placeholder': 'Password',
             'required': 'True'
         })
