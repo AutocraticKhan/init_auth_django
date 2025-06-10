@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>{% block title %}My Django Site{% endblock title %}</title> {# Django block for page title #}
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    /* General styles */
+    body { font-family: 'Inter', sans-serif; }
+    .category-icon, .listing-icon { font-size: 1.5rem; }
+    .event-cover {
+      background-size: cover;
+      background-position: center;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .glass {
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 8px 24px 0 rgba(0,0,0,.04);
+      backdrop-filter: blur(4px);
+    }
+    /* Add any other base styles here */
+  </style>
+  {% block extra_head %}
+  {# Add any page-specific head elements like meta tags, CSS links here #}
+  {% endblock extra_head %}
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'homepage' %}" class="flex items-center space-x-2 text-blue-600 font-bold text-lg"> {# Example Django URL tag #}
+       
+        <i class="fas fa-compass fa-lg"></i>
+        <span>DirectoryHub</span>
+      </a>
+      <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
+        <a href="{% url 'homepage' %}" class="hover:text-blue-600">Home</a> {# Example Django URL tag #}
+        <a href="#" class="hover:text-blue-600">Home</a> {# Example Django URL tag #}
+        <a href="#" class="hover:text-blue-600">Home</a> {# Example Django URL tag #}
+        <a href="#" class="hover:text-blue-600">Home</a> {# Example Django URL tag #}
+      
+      </nav>
+      <div class="flex items-center space-x-4">
+        <a href="{% url 'login' %}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold shadow">Sign In</a> {# Example Django URL tag #}
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% block body %}
+    {# This block will be overridden by specific page templates #}
+    {# For example, in a template extending this base: #}
+    {# {% extends 'base.html' %} #}
+    {# {% block body %} #}
+    {#   <h1>Welcome to my page!</h1> #}
+    {#   <p>This is the content for this specific page.</p> #}
+    {# {% endblock body %} #}
+    {% endblock body %}
+  </main>
+
+  <footer class="bg-gray-800 text-gray-300 py-10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="footer-about">
+                <h3 class="text-lg font-semibold text-white mb-4">DirectoryHub</h3>
+                <p class="text-sm">Your guide to local businesses and services. Find what you need, where you need it.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'homepage' %}" class="hover:text-white">Home</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">text-sm</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">text-sm</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">text-sm</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">text-sm</a></li> {# Example Django URL tag #}
+                    
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="text-lg font-semibold text-white mb-4">Services</h3>
+                <ul>
+                    <li><a href="#" class="hover:text-white">Digital Marketing</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">SEO Services</a></li> {# Example Django URL tag #}
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="text-lg font-semibold text-white mb-4">Support</h3>
+                <ul>
+                    <li><a href="#" class="hover:text-white">FAQ</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">Terms of Service</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">Help Center</a></li> {# Example Django URL tag #}
+                    <li><a href="#" class="hover:text-white">Get in Touch</a></li> {# Example Django URL tag #}
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center text-sm mt-8">
+            <p>© {% now "Y" %} My Django Site. All rights reserved.</p> {# Django tag for current year #}
+        </div>
+    </footer>
+
+    {% block scripts %}
+    {# Add page-specific or global JS files here #}
+    {# For example: #}
+    {# <script src="{% static 'js/my_script.js' %}"></script> #} {# Example Django static tag #}
+    {% endblock scripts %}
+
+</body>
+</html>

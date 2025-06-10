@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
+    'listings.apps.ListingsConfig',
+    'listing_details.apps.ListingDetailsConfig',
+    'interactions.apps.InteractionsConfig',
+    'promotions.apps.PromotionsConfig',
+    'analytics.apps.AnalyticsConfig',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -133,10 +141,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 
 # Email Host Email Address
-EMAIL_HOST_USER = ''
+EMAIL_HOST_USER = 'autocratic.jalal@gmail.com'
 
 # Email Host App Password
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'Jalpari.92047889'
 EMAIL_USE_TLS = True
 
 # Default email address to use for various automated correspondence from the site managers.

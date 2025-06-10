@@ -1,0 +1,12 @@
+body { font-family: 'Inter', sans-serif; }
+.category-icon, .listing-icon { font-size: 1.5rem; }
+.event-cover {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.glass {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 24px 0 rgba(0,0,0,.04);
+  backdrop-filter: blur(4px);
+}

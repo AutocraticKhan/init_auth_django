@@ -17,7 +17,6 @@ from authentication.forms import UserRegistrationForm
 
 # Create your views here.
 
-@login_required(login_url='login')
 def homepage(request):
     return render(request, 'homepage.html')
 
@@ -71,4 +70,3 @@ def activate(request, uidb64, token):
         return render(request, 'authentication/email_activation/activation_successful.html')
     else:
         return render(request, 'authentication/email_activation/activation_unsuccessful.html')
-
